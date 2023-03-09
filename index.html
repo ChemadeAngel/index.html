@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Contador para el Maratón CA CORIA 2024</title>
+  </head>
+  <body>
+    <h1 id="mensaje"></h1>
+
+    <script>
+      // Fecha objetivo
+      var objetivo = new Date("2024-01-18T08:30:00");
+
+      setInterval(function() {
+        // Fecha actual
+        var ahora = new Date();
+
+        // Cálculo de los segundos que faltan
+        var segundos_restantes = (objetivo - ahora) / 1000;
+
+        // Si la fecha objetivo ha pasado, mostrar un mensaje
+        if (segundos_restantes <= 0) {
+          document.getElementById("mensaje").innerHTML = "El Maratón CA CORIA 2024 ya ha comenzado";
+          return;
+        }
+
+        // Cálculo de los días, horas, minutos y segundos que faltan
+        var dias_restantes = Math.floor(segundos_restantes / 86400);
+        var horas_restantes = Math.floor((segundos_restantes % 86400) / 3600);
+        var minutos_restantes = Math.floor(((segundos_restantes % 86400) % 3600) / 60);
+        var segundos_restantes = Math.floor(((segundos_restantes % 86400) % 3600) % 60);
+
+        // Mensaje a mostrar
+        var mensaje = dias_restantes + "d " + horas_restantes + "h " + minutos_restantes + "m " + segundos_restantes + "s para el Maratón CA CORIA 2024";
+
+        // Mostrar el mensaje
+        document.getElementById("mensaje").innerHTML = mensaje;
+      }, 1000);
+    </script>
+  </body>
+</html>
